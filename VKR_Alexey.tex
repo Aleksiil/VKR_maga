@@ -1,7 +1,7 @@
 \documentclass[14pt,a4paper]{extarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
-\usepackage[hyperref,hyperprint,spisok]{project}
+\usepackage[hyperref,hyperprint,spisok]{style/project}
 \usepackage[left=3cm,right=1cm, top=2cm,bottom=2cm]{geometry}
 %\usepackage{bbm}
 %\usepackage{omega}
@@ -127,7 +127,7 @@ SSD-алгоритм представляет собой комбинацию д
 Головная часть SSD задается одним или несколькими слоями, добавленными к базовой модели. Данные выхода могут быть интерпретированы как ограничивающие прямоугольники и классы объектов в пространственном расположении активаций конечных слоев. Архитектура сверточной нейронной сети с SSD-детектером схематично представлена на рис. \ref{ssd_fig_lbl}.
 \begin{figure}[h]
 \center{\includegraphics[width=1.0\linewidth, height=0.4
-\textheight]{ssd_fig}}
+\textheight]{data/ssd_fig}}
 \caption{Сеть с SSD-детектером}
 \label{ssd_fig_lbl}
 \end{figure}  
@@ -165,7 +165,7 @@ SSD-алгоритм представляет собой комбинацию д
 последовательности $(y_1, ..., y_m)$ символов по одному элементу за раз. 
 Transformer следует этой общей архитектуре. Общая схема сети Transformer представлена на рис. \ref{trans_arh_lbl}.
 \begin{figure}[h]
-\center{\includegraphics[width=0.6\linewidth]{trans_arh.jpg}}
+\center{\includegraphics[width=0.6\linewidth]{data/trans_arh.jpg}}
 \caption{Архитектура Transformer-сети}
 \label{trans_arh_lbl}
 \end{figure}  
@@ -201,7 +201,7 @@ self-attention(Q, K, V) = softmax\left(\dfrac{QK^T}{\sqrt{d_k}} \right)V.\label{
 
 \textbf{Слой Multi-head attention.} Конкретный набор значений $Q, K, V$ отовечает конкретному виду соотношений для токенов, данные матрицы получают при этом ограниченных набор данных из входных. Решением данной проблемы стал multi-head-attention подход, который заключается в том, что один слой внимания заменяется сразу несколькими параллельными, в каждом из которых используются свои веса. После этого результаты объединяются. Схематично данный слой представлен на рис. \ref{mul_head_lbl}.
 \begin{figure}[h]
-\center{\includegraphics[width=0.45\linewidth]{mul_head}}
+\center{\includegraphics[width=0.45\linewidth]{data/mul_head}}
 \caption{Слой multi-head attention}
 \label{mul_head_lbl}
 \end{figure}  
@@ -227,7 +227,7 @@ self-attention(Q, K, V) = softmax\left(\dfrac{QK^T}{\sqrt{d_k}} \right)V.\label{
 
 Первый компонент, токенизатор, как следует из названия, отвечает за извлечение токенов. Второй осуществляет прохождение через сеть, которая была описана ранее, а третий производит сложение feature map и выхода трансформера. Схема ViT представлена на рис. \ref{vitr_lbl}.
 \begin{figure}[h!]
-\center{\includegraphics[width=0.95\linewidth]{vitr}}
+\center{\includegraphics[width=0.95\linewidth]{data/vitr}}
 \caption{Схема сети ViT}
 \label{vitr_lbl}
 \end{figure} 
@@ -236,7 +236,7 @@ self-attention(Q, K, V) = softmax\left(\dfrac{QK^T}{\sqrt{d_k}} \right)V.\label{
 \subsubsection*{Сеть DETR}
 Еще одной модификацией, которая используется для детектирования, является применение сети DETR (Object Detection with Transformers). В этом случае так же, как и для сети ViT, трансформер применяется не к самому изображению, а к признакам, которые были выделены сверточной сетью. Схема работы для сети DETR представлена на рис. \ref{detr_lbl}.
 \begin{figure}[b!]
-\center{\includegraphics[width=0.85\linewidth]{detr}}
+\center{\includegraphics[width=0.85\linewidth]{data/detr}}
 \caption{Схема сети DETR}
 \label{detr_lbl}
 \end{figure} 
@@ -337,7 +337,7 @@ L_{bbox} \left(bbox_{true}, bbox_{pred}\right) = - \lambda_2 \log(IoU\left(bbox_
 
 IoU (Intersection over Union) -- площадь пересечения ограничивающих рамок, деленная на площадь их объединения.
 \begin{figure}[h]
-\center{\includegraphics[width=0.6\linewidth]{IoU.png}}
+\center{\includegraphics[width=0.6\linewidth]{data/IoU.png}}
 \caption{IoU}
 \label{IoU}
 \end{figure}  
@@ -412,7 +412,7 @@ LayerNormalization
 Обучение сети проводилось 800 эпох. Наилучшие достигнутое значение среднего IoU равняется 54.5\%. Для точности  -- 98.4\%. Результаты обучения сети представлены на рис. \ref{mIoU} и рис. \ref{Acc}.
 \begin{figure}[h!]
 \center{\includegraphics[width=1.\linewidth, height=0.55
-\textheight]{mean_IoU}}
+\textheight]{data/mean_IoU}}
 \caption{График среднего IoU алгоритма ViT}
 \label{mIoU}
 \end{figure} 
@@ -421,7 +421,7 @@ LayerNormalization
 
 \begin{figure}[h!]
 \center{\includegraphics[width=1.\linewidth, height=0.55
-\textheight]{Accuracy}}
+\textheight]{data/Accuracy}}
 \caption{График точности алгоритма ViT}
 \label{Acc}
 \end{figure} 
@@ -430,13 +430,13 @@ LayerNormalization
 
 \newpage
 \begin{figure}[h!]
-\center{\includegraphics[width=1\linewidth]{result1}}
+\center{\includegraphics[width=1\linewidth]{data/result1}}
 \caption{Первый пример обнаружения объектов ViT нейросетью}
 \label{result1}
 \end{figure} 
 
 \begin{figure}[h!]
-\center{\includegraphics[width=1\linewidth]{result4}}
+\center{\includegraphics[width=1\linewidth]{data/result4}}
 \caption{Второй пример обнаружения объектов ViT нейросетью}
 \label{result4}
 \end{figure} 
